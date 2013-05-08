@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	
+	<bean id="dataSource01"
+	    	class="org.springframework.jndi.JndiObjectFactoryBean"
+	    	scope="singlton">
+	    <property name="jndiName" value="/jndi/ora"/>
+	    <property name="resourceRef" avlue="true"/>  
+	</bean>
+	
+	<bean id="dataSource02"
+	    	class="org.springframework.jndi.DriveManagerDataSource">
+	    <property name="driveClassName" value="${jdbc.driveClassName}"/>
+	    <property name="url" value="${jdbc.url}"/>  
+	    <property name="username" value="${jdbc.username"/>  
+	    <property name="password" value="${jdbc.password"/>  
+	</bean>
+	
+	<bean id="dataSource03"
+	    	class="org.springframework.jdbc.datasource.SingleConnectionDataSource">
+	    <property name="driveClassName" value="${jdbc.driveClassName}"/>
+	    <property name="url" avlue="${jdbc.url}"/>  
+	    <property name="username" avlue="${jdbc.username"/>  
+	    <property name="password" avlue="${jdbc.password"/>  
+	</bean>
+	
+	<bean id="dataSource04"
+	    	class="org.apache.commons.dbcp.BasicDataSource">
+	    <property name="driveClassName" value="${jdbc.driveClassName}"/>
+	    <property name="url" avlue="${jdbc.url}"/>  
+	    <property name="username" avlue="${jdbc.username"/>  
+	    <property name="password" avlue="${jdbc.password"/>  
+	    <property name="initialSize" avlue="${jdbc.initialSize"/>  
+	    <property name="MaxActive" avlue="${jdbc.MaxActive"/>  
+	</bean>
+    
+	
+
+    
+	
+	
+
+</beans>

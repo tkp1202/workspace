@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	
+    <beans>
+        <beans id="jdbcTemplate"
+            	class="org.springframework.jdbc.core.JdbcTemplate">
+            <propery name="dataSource" ref="dataSource04"/> 
+        </beans>
+        
+        <beans id="nameParamjdncTemplate"
+            	class="org.springframework.jdbc.core.namedparam.NameParameterJdbcTemplate">
+            <construstor-arg   ref="dataSource04"/> 
+        </beans>
+        
+        <beans id="springJdbcUserDaoImpl02"
+            	class="spring.service.user.impl.SpringJdbcUserDaoImpl02">
+            <propery name="jdbcTemplate" ref="jdbcTemplate"/> 
+            <propery name="namedParamjdbcTemplate" ref="namedParamjdbcTemplate"/> 
+        </beans>
+        
+        
+    </beans>
+	
+    
+	
+	
+
+</beans>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	
+    <!-- 인스턴스 생성 setter injection DataSource 인스턴스 주입 
+    	ApplicationContext는 MessageSource 인터페이스를 사용 파라미터화된 message를 사용할수 있다 
+    - id는 MessageSource 로 
+    	ApplicationContext 가 messageSource 의 이름으로 bean을 찾음 
+     -->
+    
+   <util:properties id="sqlProperties" location="classpath:sql.spring-userservice-sql.sql.properties"/>
+   
+   
+        <!-- 인스턴스 생성 setter injection DataSource 인스턴스 주입  -->
+        
+        <bean id="springJdbcUserDaoImpl05"
+            class="spring.service.user.impl.SpringJdbcUserDaoImpl05">
+            <property name="dataSource" ref="dataSource04"/>
+            <propery name="sqlMap" >
+                <map>
+                    <entry key="add" value="#{sqlProperties[user.sql.insert]"}/>
+                    <entry key="get" value="#{sqlProperties[user.sql.select]"}/>
+                    <entry key="update" value="#{sqlProperties[user.sql.update]"}/>
+                    <entry key="remove" value="#{sqlProperties[user.sql.delete]"}/>
+                    <entry key="getList" value="#{sqlProperties[user.sql.selectAll]"}/>
+                </map>
+                </propery>
+        </bean>
+
+        
+</beans>

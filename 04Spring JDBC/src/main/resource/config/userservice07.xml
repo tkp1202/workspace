@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	
+    <!-- 인스턴스 생성 setter injection DataSource 인스턴스 주입 
+    * SQL을 갖는 properties 내용을 map 으로 injection  
+    * Spring  3.0에서 추가된  SpEL 사용    
+     -->
+    
+   <util:properties id="sqlProperties" 
+       location="classpath:sql.spring-userservice-sql.sql.properties"/>
+   
+   
+        <!-- 인스턴스 생성 setter injection DataSource 인스턴스 주입  -->
+        
+                
+	<bean id="sqlService06" 
+	    class="spring.service.user.impl.SpringJdbcUserDaoImpl06">
+		<property name="sqlMap" />
+
+	</bean>
+         
+             		
+                <map>
+                    <entry key="add" value="#{sqlProperties[user.sql.insert]"}/>
+                    <entry key="get" value="#{sqlProperties[user.sql.select]"}/>
+                    <entry key="update" value="#{sqlProperties[user.sql.update]"}/>
+                    <entry key="remove" value="#{sqlProperties[user.sql.delete]"}/>
+                    <entry key="getList" value="#{sqlProperties[user.sql.selectAll]"}/>
+                </map>
+               </propery>
+
+
+	<bean id="springJdbcUserDaoImpl06" 
+	    class="spring.service.user.impl.SpringJdbcUserDaoImpl06">
+		<property name="sqlMap" ref="dataSource04" />
+		<property name="sqlService" ref="sqlServiceImpl06" />
+	</bean>
+
+
+	<bean id="sqlServiceImpl07" 
+	    class="spring.service.user.impl.SqlServiceImpl07">
+		<property name="userDAO" ref="springJdbcUserDaoImpl06">
+
+	</bean>
+
+        
+</beans>

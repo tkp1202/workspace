@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src/main/java"/>
+	<classpathentry kind="src" path="src/main/resource"/>
+	<classpathentry kind="src" path="src/test/java"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.7.0_13"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/jdbc-driver"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/com.springsource.org.apache.commons.logging-1.1.1"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/spring-framework-3.0.5.RELEASE"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/com.springsource.org.apache.commons.dbcp-1.2.2.osgi"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/com.springsource.org.apache.commons.pool-1.5.3"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/com.springsource.javax.inject-1.0.0"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

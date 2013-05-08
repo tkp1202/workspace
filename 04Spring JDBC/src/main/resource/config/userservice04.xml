@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	
+    <!-- 인스턴스 생성 setter injection DataSource 인스턴스 주입 
+    	ApplicationContext는 MessageSource 인터페이스를 사용 파라미터화된 message를 사용할수 있다 
+    - id는 MessageSource 로 
+    	ApplicationContext 가 messageSource 의 이름으로 bean을 찾음 
+     -->
+    
+   
+        <beans id="messageSource"
+            	class="org.springframework.context.support.ResourceBundleMessageSource">
+            <propery name="beanname" value="sql/spring-userservice-sql"/> 
+         </beans>
+     
+     <!-- 인스턴스 생성 constuctor Injection DataSource 인스턴스 주입  -->   
+       		
+       	 <bean id="messsageSourceAccessor"
+            class="spring.service.user.impl.SpringJdbcUserDaoImpl04" > 
+            <property name="dataSource" ref="dataSource04"/>
+            <property name="messageSourceAcessor" ref="messageSourceAccessor"/> 
+        </bean>
+        
+        <!-- 인스턴스 생성 setter injection DataSource 인스턴스 주입  -->
+        
+        <bean id="springJdbcUserDaoImpl04"
+            class="spring.service.user.impl.SpringJdbcUserDaoImpl04">
+            <property name="dataSource" ref="dataSource04"/>
+            <propery name="messageSouceAccessor" ref="messageSourceAccessor"/>
+        </bean>
+
+        
+</beans>
